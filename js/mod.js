@@ -1,7 +1,7 @@
 let modInfo = {
 	name: "Shade's Tree",
 	author: "ShadeOfBlurple",
-	pointsName: "points",
+	pointsName: "mashups",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -42,6 +42,9 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('m', 11)) gain = gain.times(4)
+	if (hasUpgrade('m', 12)) gain = gain.times(upgradeEffect('m', 12))
+	if (hasUpgrade('m', 15)) gain = gain.pow(1.02 * player.points.pow(0.02))
 	return gain
 }
 
